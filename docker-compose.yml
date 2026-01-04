@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  php-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: underwrite-agent-test
+    environment:
+      - APP_ENV=dev
+      - TIMEZONE=Asia/Shanghai
+    volumes:
+      - ./:/data
+    working_dir: /data
+    networks:
+      - janfish
+    stdin_open: true
+    tty: true
+
+networks:
+  janfish:
+    external: true
