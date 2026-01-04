@@ -305,7 +305,7 @@ class ErrorHandlingTest
         try {
             // 创建短超时的代理
             $shortTimeoutAgent = new UnderwriteAgent([
-                'apiKey' => 'sk-bc3138b8402c471a922a176ae7a642c1',
+                'apiKey' => 'sk-xxx',
                 'timeout' => 1, // 1秒超时
                 'connectTimeout' => 1
             ]);
@@ -362,7 +362,7 @@ function main()
 {
     // 配置信息 - 使用提供的API密钥
     $config = [
-        'apiKey' => 'sk-bc3138b8402c471a922a176ae7a642c1',
+        'apiKey' => 'sk-xxx',
         'timeout' => 30,
         'connectTimeout' => 10
     ];
