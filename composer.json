@@ -1,31 +1,33 @@
 {
-    "name": "janfish/underwrite-agent",
-    "description": "Insurance underwriting analysis system based on Tongyi Qianwen API",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Janfish",
-            "email": "janfish@example.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.4",
-        "guzzlehttp/guzzle": "^7.0",
-        "ext-json": "*"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Janfish\\UnderwriteAgent\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Janfish\\UnderwriteAgent\\Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "stable"
+  "name": "janfish/underwrite-agent",
+  "description": "Insurance underwriting analysis system based on Tongyi Qianwen API",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Janfish",
+      "email": "janfish@example.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": "^7.0",
+    "ext-json": "*",
+    "psr/log": "^1.1|^2.0|^3.0",
+    "ext-zlib": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Janfish\\UnderwriteAgent\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Janfish\\UnderwriteAgent\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable"
 }
