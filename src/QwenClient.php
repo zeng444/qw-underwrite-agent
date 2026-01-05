@@ -29,9 +29,10 @@ class QwenClient
     public function __construct(
         string $apiKey,
         string $baseUrl = 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
-        int $timeout = 30,
-        int $connectTimeout = 10
-    ) {
+        int    $timeout = 30,
+        int    $connectTimeout = 10
+    )
+    {
         $this->apiKey = $apiKey;
         $this->baseUrl = $baseUrl;
         $this->timeout = $timeout;
@@ -61,6 +62,17 @@ class QwenClient
     public function chat(array $messages, string $model = 'qwen-turbo', float $temperature = 0.7, int $maxTokens = 2000): array
     {
         try {
+            print_r([
+                'model' => $model,
+                'input' => [
+                    'messages' => $messages,
+                ],
+                'parameters' => [
+                    'temperature' => $temperature,
+                    'max_tokens' => $maxTokens,
+                    'result_format' => 'message',
+                ],
+            ]);
             $response = $this->httpClient->post($this->baseUrl, [
                 'json' => [
                     'model' => $model,
@@ -74,9 +86,7 @@ class QwenClient
                     ],
                 ],
             ]);
-
             $result = json_decode($response->getBody()->getContents(), true);
-            
             if (json_last_error() !== JSON_ERROR_NONE) {
                 throw new RuntimeException('Invalid JSON response from API');
             }
@@ -102,7 +112,7 @@ class QwenClient
 
         foreach ($requests as $index => $request) {
             $messages = $request['messages'] ?? [];
-            $model = $request['model'] ?? 'qwen-turbo';
+            $model = $request['model'];
             $temperature = $request['temperature'] ?? 0.7;
             $maxTokens = $request['max_tokens'] ?? 2000;
 
@@ -115,7 +125,7 @@ class QwenClient
                     'parameters' => [
                         'temperature' => $temperature,
                         'max_tokens' => $maxTokens,
-                        'result_format' => 'message',
+                        'result_format' => 'text',
                     ],
                 ],
             ]);
