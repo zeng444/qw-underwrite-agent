@@ -23,7 +23,7 @@
 - **业务层**: 定义专业的保险承保分析提示词和业务逻辑，集成日志和缓存
 - **支持层**: 配置管理、日志系统、缓存机制、异常处理
 
-## ✨ 功能特性
+## 功能特性
 
 - **单次承保分析**: 对单个承保条件进行专业分析
 - **批量承保分析**: 并发处理多个承保分析请求，支持错误隔离
@@ -75,7 +75,7 @@
 ```php
 $config = [
     'apiKey' => $_ENV['QWEN_API_KEY'],
-    'logFile' => '/data/app.log',  // ✅ 正确：指定日志文件路径
+    'logFile' => '/data/app.log',  // 正确：指定日志文件路径
     'logLevel' => 'debug',        // 可选：设置日志级别
 ];
 ```
@@ -98,7 +98,7 @@ $config = [
 $config = [
     'apiKey' => $_ENV['QWEN_API_KEY'],
     'cache' => 'memory',        // 开发环境使用内存缓存，自动启用缓存
-    'logFile' => __DIR__ . '/logs/app.log',  // ✅ 必须指定日志文件路径才能写入日志
+    'logFile' => __DIR__ . '/logs/app.log',  // 必须指定日志文件路径才能写入日志
     'logLevel' => 'debug',      // 开发环境使用调试日志
 ];
 ```
@@ -500,7 +500,7 @@ $config = [
     'connectTimeout' => 15,                        // 连接超时
     'retryAttempts' => 5,                          // 增加重试次数
     'retryDelay' => 2000,                          // 重试延迟
-    'logFile' => '/var/log/underwrite/underwrite.log', // ✅ 生产日志路径（必须指定）
+    'logFile' => '/var/log/underwrite/underwrite.log', // 生产日志路径（必须指定）
     'logLevel' => 'info',                          // 生产环境日志级别
     'cache' => 'file',                             // 缓存类型: none/memory/file
     'cacheDir' => '/var/cache/underwrite',       // 缓存目录（文件缓存时）
