@@ -5,7 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Janfish\UnderwriteAgent\UnderwriteAgent;
 
 // 配置信息 - 从环境变量获取API密钥
-$apiKey = $_ENV['QWEN_API_KEY'] ?? 'sk-bc3138b8402c471a922a176ae7a642c1';
+$apiKey = $_ENV['QWEN_API_KEY'] ?? '';
 if (empty($apiKey)) {
     die("错误：请设置 QWEN_API_KEY 环境变量\n");
 }
