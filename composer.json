@@ -1,5 +1,5 @@
 {
-  "name": "janfish/underwrite-agent",
+  "name": "janfish/qw-underwrite-agent",
   "description": "Insurance underwriting analysis system based on Tongyi Qianwen API",
   "type": "library",
   "license": "MIT",
