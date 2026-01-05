@@ -62,17 +62,7 @@ class QwenClient
     public function chat(array $messages, string $model = 'qwen-turbo', float $temperature = 0.7, int $maxTokens = 2000): array
     {
         try {
-            print_r([
-                'model' => $model,
-                'input' => [
-                    'messages' => $messages,
-                ],
-                'parameters' => [
-                    'temperature' => $temperature,
-                    'max_tokens' => $maxTokens,
-                    'result_format' => 'message',
-                ],
-            ]);
+
             $response = $this->httpClient->post($this->baseUrl, [
                 'json' => [
                     'model' => $model,
@@ -125,7 +115,7 @@ class QwenClient
                     'parameters' => [
                         'temperature' => $temperature,
                         'max_tokens' => $maxTokens,
-                        'result_format' => 'text',
+                        'result_format' => 'message',
                     ],
                 ],
             ]);

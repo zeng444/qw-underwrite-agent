@@ -239,7 +239,7 @@ class UnderwriteAgent
             if (!isset($request['params'])) {
                 throw new RuntimeException("请求参数[$index]缺少params字段");
             }
-            $composite[] = $this->buildUserPrompt($request['params']) . "\n";
+            $composite[] = $this->buildUserPrompt($request['params']);
         }
         return implode("\n", $composite);
     }
