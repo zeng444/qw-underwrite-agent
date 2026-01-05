@@ -1,6 +1,6 @@
 # 保险承保分析智能体（优化版）
 
-基于通义千问 API 的 PHP Composer 插件，采用分层架构设计，将 SDK 层与业务层分离，提供专业、高效、可靠的保险承保分析功能。
+基于通义千问 API 的 PHP Composer 插件，将 SDK 层与业务层分离，提供专业、高效、可靠的保险承保分析功能。
 
 ## 架构设计
 
@@ -15,7 +15,6 @@
   - 异常处理：业务异常和系统异常处理
   - 日志记录：完整的操作日志和错误日志
   - 缓存机制：支持内存缓存和文件缓存
-- **特点**: 简化使用，封装性好，专注于保险承保分析领域，具备高可靠性和性能
 
 ### 内部架构
 
@@ -28,14 +27,6 @@
 - **单次承保分析**: 对单个承保条件进行专业分析
 - **批量承保分析**: 并发处理多个承保分析请求，支持错误隔离
 - **综合承保分析**: 一次性分析多组承保条件，提供综合评估
-- **分层架构**: SDK 层与业务层分离，职责清晰
-- **专业提示词**: 业务层定义专业的保险承保分析提示词
-- **并发支持**: 支持高并发请求处理，可配置并发数
-- **完善的错误处理**: 区分业务异常和系统异常，支持重试机制
-- **日志系统**: PSR-3 兼容的日志记录，支持多级日志
-- **缓存机制**: 内存缓存和文件缓存，提高响应速度
-- **配置管理**: 集中式配置管理，支持环境变量
-- **参数验证**: 全面的参数验证和清洗
 
 ## 配置参考
 
@@ -83,7 +74,7 @@ $config = [
 **常见误区**：
 
 ```php
-// ❌ 错误：没有设置 logFile，实际上不会写入日志
+// 错误：没有设置 logFile，实际上不会写入日志
 $config = [
     'apiKey' => $_ENV['QWEN_API_KEY'],
     'logLevel' => 'debug',  // 虽然设置了日志级别，但没有指定文件路径
@@ -122,15 +113,13 @@ $config = [
 
 - PHP >= 7.4
 - Guzzle HTTP Client >= 7.0
-- ext-json >= 1.0
-- ext-zlib >= 1.0
 
 ## 快速开始
 
 ### 安装
 
 ```bash
-composer require janfish/underwrite-agent
+composer require janfish/qw-underwrite-agent
 ```
 
 ### 基础使用（推荐方式）
@@ -145,7 +134,7 @@ $config = [
     'apiKey' => $_ENV['QWEN_API_KEY'] ?? 'your-api-key',  // 推荐从环境变量读取
     'timeout' => 600,                      // 可选：请求超时时间（秒）
     'connectTimeout' => 10,               // 可选：连接超时时间（秒）
-    'logFile' => __DIR__ . '/logs/app.log', // ⚠️ 重要：必须指定日志文件路径才能写入日志
+    'logFile' => __DIR__ . '/logs/app.log', // 重要：必须指定日志文件路径才能写入日志
     'logLevel' => 'info',                  // 可选：日志级别
     'cache' => 'memory',                   // 可选：缓存类型（memory/file/none）
 ];
@@ -452,7 +441,7 @@ php test_optimization.php
 ```php
 $config = [
     'apiKey' => $_ENV['QWEN_API_KEY'],
-    'logFile' => __DIR__ . '/logs/underwrite.log',  // ✅ 必须指定日志文件路径
+    'logFile' => __DIR__ . '/logs/underwrite.log',  // 必须指定日志文件路径
     'logLevel' => 'info',                           // 日志级别
 ];
 
