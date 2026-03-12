@@ -10,9 +10,9 @@ namespace Janfish\UnderwriteAgent\Cache;
  */
 class FileCache implements CacheInterface
 {
-    private string $cacheDir;
-    private int $defaultTtl;
-    private bool $useCompression;
+    private  $cacheDir;
+    private $defaultTtl;
+    private $useCompression;
 
     public function __construct(string $cacheDir = null, int $defaultTtl = 3600, bool $useCompression = true)
     {

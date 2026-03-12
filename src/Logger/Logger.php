@@ -13,9 +13,9 @@ use Psr\Log\LogLevel;
  */
 class Logger implements LoggerInterface
 {
-    private string $logFile;
-    private string $logLevel;
-    private array $logLevels = [
+    private $logFile;
+    private $logLevel;
+    private $logLevels = [
         LogLevel::EMERGENCY => 0,
         LogLevel::ALERT => 1,
         LogLevel::CRITICAL => 2,

@@ -22,25 +22,25 @@ use Psr\Log\NullLogger;
 class UnderwriteAgent
 {
     /** @var QwenClient SDK客户端，负责与通义千问API交互 */
-    private QwenClient $qwenClient;
-    
+    private $qwenClient;
+
     /** @var ConfigManager 配置管理器，统一管理所有配置项 */
-    private ConfigManager $configManager;
-    
+    private $configManager;
+
     /** @var LoggerInterface PSR-3兼容的日志记录器 */
-    private LoggerInterface $logger;
-    
+    private $logger;
+
     /** @var CacheInterface 缓存接口，支持内存缓存和文件缓存 */
-    private CacheInterface $cache;
-    
+    private $cache;
+
     /** @var float AI模型的温度参数，控制输出的随机性（0-1之间） */
-    private float $temperature;
-    
+    private $temperature;
+
     /** @var int AI模型生成的最大token数量 */
-    private int $maxToken;
-    
+    private $maxToken;
+
     /** @var string 使用的AI模型名称 */
-    private string $model;
+    private $model;
 
 
     /**
@@ -95,12 +95,12 @@ class UnderwriteAgent
 
     /**
      * 根据配置初始化缓存
-     * 
+     *
      * 缓存初始化逻辑说明：
      * - memory: 使用内存缓存，数据存储在内存中，速度快但重启后数据丢失
      * - file: 使用文件缓存，数据持久化到文件系统，适合生产环境
      * - none: 使用空缓存实现，所有缓存操作都返回默认值，相当于禁用缓存
-     * 
+     *
      * 默认行为：
      * - 如果用户没有指定cacheDir，文件缓存会使用系统临时目录下的underwrite_cache文件夹
      * - 空缓存实现确保代码一致性，无需在业务逻辑中判断缓存是否启用

@@ -12,8 +12,8 @@ use Janfish\UnderwriteAgent\Exception\Exception;
  */
 class ConfigManager
 {
-    private array $config;
-    private array $defaultConfig = [
+    private $config;
+    private $defaultConfig = [
         'baseUrl' => 'https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation',
         'timeout' => 30,
         'connectTimeout' => 10,
@@ -39,10 +39,10 @@ class ConfigManager
     {
         $this->validateRequiredConfig($config);
         $this->config = array_merge($this->defaultConfig, $config);
-        
+
         /**
          * 处理缓存配置兼容性
-         * 
+         *
          * 逻辑说明：
          * - 如果用户设置了cache参数且没有手动设置cacheEnabled，则根据cache值自动决定缓存启用状态
          * - 当cache为'none'时，cacheEnabled为false（禁用缓存）
@@ -52,10 +52,10 @@ class ConfigManager
         if (isset($config['cache']) && !isset($config['cacheEnabled'])) {
             $this->config['cacheEnabled'] = ($config['cache'] !== 'none');
         }
-        
+
         /**
          * 处理日志文件配置
-         * 
+         *
          * 逻辑说明：
          * - 如果用户设置了logFile参数且没有手动设置logEnabled，则根据logFile值自动决定日志启用状态
          * - 当logFile不为空时，logEnabled为true（启用日志）
@@ -65,7 +65,7 @@ class ConfigManager
         if (isset($config['logFile']) && !isset($config['logEnabled'])) {
             $this->config['logEnabled'] = !empty($config['logFile']);
         }
-        
+
         $this->validateConfigTypes();
     }
 

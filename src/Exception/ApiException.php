@@ -11,7 +11,7 @@ use Throwable;
  */
 class ApiException extends Exception
 {
-    private ?array $responseData;
+    private $responseData;
 
     /**
      * @param string $message

@@ -10,8 +10,8 @@ namespace Janfish\UnderwriteAgent\Cache;
  */
 class MemoryCache implements CacheInterface
 {
-    private array $cache = [];
-    private array $expirations = [];
+    private $cache = [];
+    private $expirations = [];
 
     /**
      * 获取缓存值
@@ -31,13 +31,13 @@ class MemoryCache implements CacheInterface
     public function set(string $key, $value, int $ttl = 3600): bool
     {
         $this->cache[$key] = $value;
-        
+
         if ($ttl > 0) {
             $this->expirations[$key] = time() + $ttl;
         } else {
             unset($this->expirations[$key]);
         }
-        
+
         return true;
     }
 
@@ -68,13 +68,13 @@ class MemoryCache implements CacheInterface
         if (!isset($this->cache[$key])) {
             return false;
         }
-        
+
         // 检查是否过期
         if (isset($this->expirations[$key]) && time() > $this->expirations[$key]) {
             $this->delete($key);
             return false;
         }
-        
+
         return true;
     }
 
@@ -119,13 +119,13 @@ class MemoryCache implements CacheInterface
     {
         $total = count($this->cache);
         $expired = 0;
-        
+
         foreach ($this->expirations as $key => $expiration) {
             if (time() > $expiration) {
                 $expired++;
             }
         }
-        
+
         return [
             'total_items' => $total,
             'expired_items' => $expired,

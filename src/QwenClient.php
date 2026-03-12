@@ -14,11 +14,11 @@ use Janfish\UnderwriteAgent\Exception\RuntimeException;
  */
 class QwenClient
 {
-    private Client $httpClient;
-    private string $apiKey;
-    private string $baseUrl;
-    private int $timeout;
-    private int $connectTimeout;
+    private $httpClient;
+    private $apiKey;
+    private $baseUrl;
+    private $timeout;
+    private $connectTimeout;
 
     /**
      * @param string $apiKey API密钥
