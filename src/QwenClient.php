@@ -41,6 +41,7 @@ class QwenClient
         $this->httpClient = new Client([
             'timeout' => $this->timeout,
             'connect_timeout' => $this->connectTimeout,
+            'verify' => false,
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->apiKey,
                 'Content-Type' => 'application/json',
